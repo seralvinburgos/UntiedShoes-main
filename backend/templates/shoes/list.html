@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title%} Home Page {% endblock title %}
+
+{% block content %}
+<h1>
+    Shoes List
+</h1>
+<a href="{% url 'shoe_create' %}" class="btn btn-primary">Create Shoe</a>
+<h2>
+    Men Shoes
+</h2>
+{% if men_shoes %}
+<div class="d-flex flex-row flex-wrap">
+    {% for shoe in men_shoes %}
+    <div class="card text-bg-dark p-1 m-1 card-product">
+        <div class="card-body">
+            <h5 class="card-title">{{ shoe.model }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ shoe.brand }}</h6>
+            <p class="card-text">{{ shoe.description }}</p>
+        </div>
+        <a href="{% url 'shoe_detail' shoe.id %}" class="btn btn-primary">View</a>
+        <a href="{% url 'shoe_edit' shoe.id %}" class="btn btn-success my-2">Edit</a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No shoes found</p>
+{% endif %}
+<h2>
+    Women Shoes
+</h2>
+{% if women_shoes %}
+<div class="d-flex flex-row flex-wrap">
+    {% for shoe in women_shoes %}
+    <div class="card text-bg-dark p-1 m-1 card-product">
+        <div class="card-body">
+            <h5 class="card-title">{{ shoe.model }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ shoe.brand }}</h6>
+            <p class="card-text">{{ shoe.description }}</p>
+        </div>
+        <a href="{% url 'shoe_detail' shoe.id %}" class="btn btn-primary">View</a>
+        <a href="{% url 'shoe_edit' shoe.id %}" class="btn btn-success my-2">Edit</a>
+    </div>
+    {% endfor %}
+</div>
+{% else %}
+<p>No shoes found</p>
+{% endif %}
+{% endblock content %}

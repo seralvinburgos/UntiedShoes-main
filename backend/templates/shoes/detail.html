@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ shoe.model }} {% endblock title %}
+
+{% block content %}
+
+<h1>
+    {{ shoe.model }} ({{ shoe.brand }})
+</h1>
+<h3>
+    $ {{ shoe.price }}
+</h3>
+
+<img class="ratio-1x1 product_image" src="{{shoe.image}}" alt="{{shoe.model}}">
+
+<p>
+    {{ shoe.description }}
+</p>
+
+<div class="col g-2">
+    <a href="{% url 'shoe_edit' shoe.id %}" class="btn btn-success">Edit</a>
+    <a href="{% url 'shoe_delete' shoe.id %}" class="btn btn-danger">Delete</a>
+    <a href="{% url 'shoes' %}" class="btn btn-primary">Go Back</a>
+</div>
+{% endblock content %}

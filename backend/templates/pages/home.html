@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title%} Home Page {% endblock title %}
+
+{% block content %}
+<h1>Staff Panel</h1>
+<article class="lh-lg">
+    {% if user.is_authenticated %}
+    <p>
+        Welcome back <strong>{{ user.username }}</strong> <i>({{user.role}})</i>
+    </p>
+    <ul>
+        <li>
+            <a class="text-black fw-bold text-decoration-none" href="{% url 'shoes' %}">Products</a>
+        </li>
+    </ul>
+    {% else %}
+    <p class="m-0">Welcome Staff Member, here you can query a lot of stuff related to the store, all you need to do is
+        <a href="{% url 'login' %}" class="btn btn-primary">Login</a> and you will be able to access the staff panel.
+    </p>
+
+    <p class="m-0">
+        If you have any questions, please contact the store owner.
+    </p>
+    <p class="m-0">
+        If you are not a staff member, please leave this page.
+    </p>
+    {% endif %}
+</article>
+{% endblock content %}
